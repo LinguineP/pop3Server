@@ -1,6 +1,5 @@
 #include "cliMsgModule.h"
-#include <vector>
-#include <sstream>
+
 
 
 
@@ -140,6 +139,10 @@ void msgHandler::RETRmsg(SOCKET cliSock,int msgId)
 
     }
 
+    
+   
+    
+
     std::cout << "Received: " << buffer << std::endl;
 
     std::string msg(buffer);
@@ -154,7 +157,10 @@ void msgHandler::RETRmsg(SOCKET cliSock,int msgId)
     if (command == "+OK") {
         std::cout << std::endl << "##############~mail body is~############# " << std::endl << std::endl;
 
-        std::cout << StrFromNetwork(cliSock)<< std::endl;
+        Encryption encEngine;
+        std::string decrypted=encEngine.decrypt(StrFromNetwork(cliSock));
+
+        std::cout << decrypted << std::endl;
 
         std::cout << std::endl << "#########################################" << std::endl<<std::endl;
     }

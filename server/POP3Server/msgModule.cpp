@@ -141,7 +141,10 @@ void MesssageSender::RetrResponse(SOCKET clientSocket, int target)
             buffer[bytesReceived] = '\0';
         }
 
-        std::string msgToSend = mail_text + "\r\n";
+        Encryption encEngine;
+        std::string encrypted = encEngine.encrypt(mail_text);
+
+        std::string msgToSend = encrypted;
 
         result = send(clientSocket, msgToSend.c_str(), msgToSend.length(), 0);
 
@@ -238,15 +241,10 @@ void MesssageSender::sendMessage(std::string& data, SOCKET clientSocket)
     const char* buffer = data.c_str();
     int dataLength = data.length();
 
-    // Send the length of the string first
-    int result = send(clientSocket, reinterpret_cast<const char*>(&dataLength), sizeof(int), 0);
-    if (result == SOCKET_ERROR) {
-        std::cerr << "Failed to send data length" << std::endl;
-        return ;
-    }
+    
 
     // Send the actual string data
-    result = send(clientSocket, buffer, dataLength, 0);
+    int result = send(clientSocket, buffer, dataLength, 0);
     if (result == SOCKET_ERROR) {
         std::cerr << "Failed to send data" << std::endl;
         return;

@@ -1,4 +1,20 @@
-﻿  dbAdapter.cpp
+﻿  msgModule.cpp
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.h(10,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file 'msgModule.cpp')
+  
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(17,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(40,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(60,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(81,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(97,76): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(132,17): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(136,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(149,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(159,74): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(180,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(185,74): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(209,72): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\msgModule.cpp(242,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   POP3Server.vcxproj -> D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\x64\Debug\POP3Server.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

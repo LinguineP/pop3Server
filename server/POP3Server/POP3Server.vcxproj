@@ -134,6 +134,7 @@
     <ClInclude Include="parser.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="userModel.h" />
+    <ClInclude Include="vigenere.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbAdapter.cpp" />
@@ -143,6 +144,7 @@
     <ClCompile Include="server.cpp" />
     <ClCompile Include="transactions.cpp" />
     <ClCompile Include="userModel.cpp" />
+    <ClCompile Include="vigenere.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

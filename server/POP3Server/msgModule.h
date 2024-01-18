@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "dbAdapter.h";
+#include "vigenere.h"
 
 
 extern dbAdapter dbHelper;

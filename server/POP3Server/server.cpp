@@ -57,6 +57,8 @@ void SrvAuto::Srv_AUTHORISATION_HANDLE_MSG()
     p.parseUserCommand(usr_msg, username, password);
 
     if (dbHelper.isBanned(username)) {
+        std::string err = "-ERR msg email addr not allowed";
+        msg.sendMessage(err,m_cliSocket);
         Srv_DISCONECTING_Procedure();
             return;
     }
@@ -66,6 +68,10 @@ void SrvAuto::Srv_AUTHORISATION_HANDLE_MSG()
         currentUser.setEmailAddr(username);
         msg.sendMaildropReady(m_cliSocket);
         Srv_TRANSACTION_HANDLE_MSG();
+    }
+    else {
+        std::string err = "-ERR incorrect password";
+        msg.sendMessage(err, m_cliSocket);
     }
    
 

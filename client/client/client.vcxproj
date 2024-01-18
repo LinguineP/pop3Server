@@ -129,9 +129,13 @@
   <ItemGroup>
     <ClCompile Include="cliMsgModule.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="tests.cpp" />
+    <ClCompile Include="vigenere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cliMsgModule.h" />
+    <ClInclude Include="tests.h" />
+    <ClInclude Include="vigenere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,11 +5,11 @@
 #5 testing
 
 COMMANDS:
-USER    s+  c+  ++  --test unsucsess
+USER    s+  c+  ++  
 STAT	s+  c+  ++  
 LIST	s+  c+  ++  
-RETR	s+  c+  ++   --test unsucsess
-DELE	s+  c+	++   --test unsucsess
+RETR	s+  c+  ++   
+DELE	s+  c+	++   
 QUIT	s+  c+  ++   
 
 

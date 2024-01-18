@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include "vigenere.h"
 
 class msgHandler {
 
