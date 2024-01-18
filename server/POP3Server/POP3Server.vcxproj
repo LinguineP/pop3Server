@@ -127,15 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="dbAdapter.h" />
+    <ClInclude Include="transactions.h" />
     <ClInclude Include="mailModel.h" />
     <ClInclude Include="msgModule.h" />
+    <ClInclude Include="parser.h" />
     <ClInclude Include="server.h" />
     <ClInclude Include="userModel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="dbAdapter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="msgModule.cpp" />
+    <ClCompile Include="parser.cpp" />
     <ClCompile Include="server.cpp" />
+    <ClCompile Include="transactions.cpp" />
     <ClCompile Include="userModel.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,6 @@
 ﻿  main.cpp
-D:\fax\mrkirm\projekat\pop3Server\client\client\main.cpp(32,36): warning C4305: 'argument': truncation from 'int' to 'u_short'
-D:\fax\mrkirm\projekat\pop3Server\client\client\main.cpp(32,36): warning C4309: 'argument': truncation of constant value
-D:\fax\mrkirm\projekat\pop3Server\client\client\main.cpp(53,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+D:\fax\mrkirm\projekat\pop3Server\client\client\main.cpp(36,36): warning C4305: 'argument': truncation from 'int' to 'u_short'
+D:\fax\mrkirm\projekat\pop3Server\client\client\main.cpp(36,36): warning C4309: 'argument': truncation of constant value
   client.vcxproj -> D:\fax\mrkirm\projekat\pop3Server\client\client\x64\Debug\client.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

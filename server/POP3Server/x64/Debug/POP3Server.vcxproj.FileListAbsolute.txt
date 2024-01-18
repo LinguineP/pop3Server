@@ -1,1 +1,3 @@
 D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\x64\Debug\POP3Server.exe
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\x64\Debug\POP3Server.vcxproj.CopyComplete
+D:\fax\mrkirm\projekat\pop3Server\server\POP3Server\x64\Debug\sqlite3.dll

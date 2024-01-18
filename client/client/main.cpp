@@ -1,12 +1,16 @@
 #include <iostream>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include "cliMsgModule.h"
+
 
 #pragma comment(lib, "ws2_32.lib")
 
 
 #pragma warning(disable : 4996)
 
+
+static msgHandler msg;
 
 void test1() {
 
@@ -48,18 +52,34 @@ void test1() {
 
         // Check if the received message is "+OK POP3 server ready"
         if (strstr(buffer, "+OK POP3 server ready") != nullptr) {
-            // Send the USER message
-            std::string userMessage = "USER your_username\r\n";
-            send(clientSocket, userMessage.c_str(), userMessage.length(), 0);
+           
+            std::string usr= "vpavle021@gmail.com";
+            std::string pass= "password";
 
+            msg.USERmsg(clientSocket,usr,pass);
             // Receive and display the response
             bytesReceived = recv(clientSocket, buffer, sizeof(buffer), 0);
             if (bytesReceived > 0) {
-                buffer[bytesReceived] = '\0';
-                std::cout << "Received: " << buffer << std::endl;
+                    buffer[bytesReceived] = '\0';
+                    std::cout << "Received: " << buffer << std::endl;
             }
         }
     }
+
+
+    msg.STATmsg(clientSocket);
+
+    msg.LISTmsg(clientSocket);
+
+
+    msg.RETRmsg(clientSocket,3);
+
+    msg.DELEmsg(clientSocket, 2);
+
+    msg.QUITmsg(clientSocket);
+
+
+    std::cout << std::endl;
 
     // Close the connection
     closesocket(clientSocket);
@@ -68,6 +88,9 @@ void test1() {
     WSACleanup();
 
 }
+
+
+
 
 int main() {
     test1();

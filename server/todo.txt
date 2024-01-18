@@ -1,0 +1,19 @@
+
+#2 update the sdl and msc diagrams
+
+#4 implement vigniere cypher encription, decription module
+#5 testing
+
+COMMANDS:
+USER    s+  c+  ++  --test unsucsess
+STAT	s+  c+  ++  
+LIST	s+  c+  ++  
+RETR	s+  c+  ++   --test unsucsess
+DELE	s+  c+	++   --test unsucsess
+QUIT	s+  c+  ++   
+
+
+done:
+
+
+#server done to be debbuged , responses need implementation ---done

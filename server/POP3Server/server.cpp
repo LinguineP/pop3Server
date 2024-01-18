@@ -8,14 +8,9 @@ bool SrvAuto::breakFlag = false;
 bool SrvAuto::connectedFlag = false;
 
 
-
-
-
-
-
 //srv_idle
 void SrvAuto::Srv_Idle_Cl_Connection_Request(){
-    printf("idle\n");
+    printf("\n<idle>\n\n");
 
 
 
@@ -31,6 +26,8 @@ void SrvAuto::Srv_Idle_Cl_Connection_Request(){
     // Accept a connection
     m_cliSocket = accept(m_Socket,NULL , NULL);
 
+ 
+
     msg.sendPOP3SrvReady(m_cliSocket);
 
     Srv_AUTHORISATION_HANDLE_MSG();
@@ -41,56 +38,83 @@ void SrvAuto::Srv_Idle_Cl_Connection_Request(){
 }
 
 
+
+
 void SrvAuto::Srv_AUTHORISATION_HANDLE_MSG()
 {
-    printf("authorisation");
+    printf("\n\n<authorisation>\n\n");
     Sleep(1000);
-    Srv_TRANSACTION_HANDLE_MSG();
 
+    Parser p;
     
 
+    std::string password;
+    std::string username;
+
+    std::string usr_msg=msg.receiveMessage(m_cliSocket);
+
+
+    p.parseUserCommand(usr_msg, username, password);
+
+    if (dbHelper.isBanned(username)) {
+        Srv_DISCONECTING_Procedure();
+            return;
+    }
+    
+
+    if (dbHelper.isLoginValid(username,password)) {
+        currentUser.setEmailAddr(username);
+        msg.sendMaildropReady(m_cliSocket);
+        Srv_TRANSACTION_HANDLE_MSG();
+    }
+   
+
+    Srv_DISCONECTING_Procedure();
     return;
 }
-	//Srv_AUTHORISATION
-bool SrvAuto::Srv_AUTHORISATION_User_Pass_Check(){
-	return true;
-}
 
-bool SrvAuto::Srv_AUTHORISATION_User_allowed_check(){
-	return true;
-
-}
-void SrvAuto::Srv_AUTHORISATION_Response(){
-    
-}
 
 //Srv_Transaction
 void SrvAuto::Srv_TRANSACTION_HANDLE_MSG(){
+    printf("\n<transaction>\n\n");
 
-    Srv_TRANSACTION_MSG_QUIT();
+    while (1) {
+
+        std::string trans_msg = msg.receiveMessage(m_cliSocket);
+
+        TransactionalRequest transaction(m_cliSocket, currentUser.getEmailAddr(), trans_msg);
+
+        if (transaction.getRequestType() == transaction.QUIT) {
+            Srv_TRANSACTION_MSG_QUIT();
+            break;
+        }
+        else if (transaction.getRequestType() == transaction.unsupported) {
+            msg.ErrUnsuported(m_cliSocket);
+            continue;
+
+        }
+
+        transaction.respondToTransaction();
+    }
+
+
+    
 
     return;
 }
 
-void	SrvAuto::Srv_TRANSACTION_MSG_STAT(){
 
-}
-
-void	SrvAuto::Srv_TRANSACTION_MSG_LIST(){
-
-}
-void	SrvAuto::Srv_TRANSACTION_MSG_RETR(){
-
-}
-void	SrvAuto::Srv_TRANSACTION_MSG_DELE(){
-
-}
-void	SrvAuto::Srv_TRANSACTION_MSG_QUIT(){
+void SrvAuto::Srv_TRANSACTION_MSG_QUIT(){
+    msg.QuitResponse(m_cliSocket);
     return;
 }
 //SRV_Disconecting
 void	SrvAuto::Srv_DISCONECTING_Procedure(){
-
+    printf("\n<disconnecting>\n\n");
+    dbHelper.deleteForDeletionRows(currentUser.getEmailAddr());
+    std::cout << "------------------------------------------------------------------\n";
+    
+    return;
 }
 
 
@@ -106,7 +130,7 @@ SrvAuto::~SrvAuto()
 
 void SrvAuto::Initialize()
 {
-    printf("initialize");
+    printf("initializing server\n_________________________________________________________________\n");
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         std::cerr << "Failed to initialize Winsock." << std::endl;
@@ -140,8 +164,6 @@ void SrvAuto::Initialize()
 
         Srv_Idle_Cl_Connection_Request();
         
-    
-    
     
     
     }

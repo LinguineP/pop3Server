@@ -13,6 +13,7 @@
 #define AUTOMAT_COUNT 3
 #define MSGBOX_COUNT 3
 
+extern dbAdapter dbHelper;
 
 /* FSM system instance. */
 
@@ -34,7 +35,7 @@ void main(int argc, char* argv[]) {
 	
 	DWORD thread_id;
 	HANDLE thread_handle;
-
+	
 	/* Start operating thread. */
 	thread_handle = CreateThread(NULL, 0, SystemThread, NULL, 0, &thread_id);
 

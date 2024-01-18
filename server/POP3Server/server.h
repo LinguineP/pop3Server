@@ -3,9 +3,13 @@
 
 
 #include "userModel.h"
-
+#include "parser.h"
+#include "dbAdapter.h"
 #include "msgModule.h"
+#include "transactions.h"
 
+
+extern dbAdapter dbHelper;
 
 
 
@@ -21,6 +25,7 @@ class SrvAuto {
 	MesssageSender msg;
 	
 	
+	
 	// FSM States
 	enum	SrvStates {	Srv_IDLE, 
 						Srv_AUTHORIZATION, 
@@ -31,15 +36,11 @@ class SrvAuto {
 	void	Srv_Idle_Cl_Connection_Request();
 	//Srv_AUTHORISATION
 	void	Srv_AUTHORISATION_HANDLE_MSG();
-	bool	Srv_AUTHORISATION_User_Pass_Check();
-	bool	Srv_AUTHORISATION_User_allowed_check();
-	void	Srv_AUTHORISATION_Response();
+
+	
 	//Srv_Transaction
 	void	Srv_TRANSACTION_HANDLE_MSG();
-	void	Srv_TRANSACTION_MSG_STAT();
-	void	Srv_TRANSACTION_MSG_LIST();
-	void	Srv_TRANSACTION_MSG_RETR();
-	void	Srv_TRANSACTION_MSG_DELE();
+	
 	void	Srv_TRANSACTION_MSG_QUIT();
 	//SRV_Disconecting
 	void Srv_DISCONECTING_Procedure();
